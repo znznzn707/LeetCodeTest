@@ -1,0 +1,16 @@
+plugins {
+    id 'groovy'
+}
+
+group 'io.github.znznzn707'
+version '1.0-SNAPSHOT'
+description = 'leetcode learn'
+
+repositories {
+    mavenCentral()
+}
+buildDir = 'out'
+dependencies {
+    testCompile "org.spockframework:spock-core:1.1-groovy-2.4-rc-2"
+}
+
