@@ -1,3 +1,6 @@
+package dp
+
+import dp.GreatestSumOfSubArray
 import spock.lang.Specification
 
 /**
