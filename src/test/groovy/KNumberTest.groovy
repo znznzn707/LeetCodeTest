@@ -10,15 +10,10 @@ class KNumberTest extends Specification {
 
     def "test"() {
         expect:
-        KNumber.kNumber(arr as int[]) == x
+        KNumber.kNumber(arr as int[], k) == x as ArrayList<Integer>
 
         where:
-        arr            || x
-        [1,2,3,4,5]    || 3
-        [1,1,2,2,3]    || 2
-        [6,5,4,4,1,2]  || 4
-        [3,2,1,5,6,4]  || 4
-        [1,2,3]        || 1
-        [-1,-2,-3]     || -3
+        arr                |k   || x
+        [4,5,1,6,2,7,3,8]  |4   || [1,2,3,4]
     }
 }
