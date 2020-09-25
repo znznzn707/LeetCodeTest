@@ -1,4 +1,4 @@
-package dp
+package two_pointer
 
 import spock.lang.Specification
 import spock.lang.Title

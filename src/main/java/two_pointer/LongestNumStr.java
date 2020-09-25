@@ -1,3 +1,5 @@
+package two_pointer;
+
 /**
  * @author JN Ma, znznzn707@hotmail.com
  * @since 2020/07/27 15:19
