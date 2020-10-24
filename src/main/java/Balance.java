@@ -1,17 +1,11 @@
+import tree.TreeNode;
+
 /**
  * @author JN Ma, znznzn707@hotmail.com
  * @since 2020/08/09 16:45
  * <a href="https://www.nowcoder.com/questionTerminal/b6bbed48cd864cf09a34a6ca14a3976f">二叉树平衡检查</a>
  */
 
-class TreeNode {
-    int val = 0;
-    TreeNode left = null;
-    TreeNode right = null;
-    public TreeNode(int val) {
-        this.val = val;
-    }
-}
 public class Balance {
     public boolean isBalance(TreeNode root) {
         // write code here

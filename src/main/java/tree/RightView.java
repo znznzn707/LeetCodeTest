@@ -15,13 +15,6 @@ import java.util.*;
  */
 public class RightView {
 
-    private static final class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
-
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1) ;
         TreeNode n1 = new TreeNode(2) ;

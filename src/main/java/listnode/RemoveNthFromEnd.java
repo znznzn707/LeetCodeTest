@@ -12,11 +12,6 @@ package listnode;
  */
 public class RemoveNthFromEnd {
 
-    static final class ListNode {
-        int val;
-        ListNode next = null;
-    }
-
     public ListNode removeNthFromEnd (ListNode head, int n) {
         // write code here
 

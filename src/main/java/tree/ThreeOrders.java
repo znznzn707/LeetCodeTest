@@ -140,10 +140,4 @@ public class ThreeOrders {
         }
         return null ;
     }
-    public static final class TreeNode {
-        int val = 0;
-        TreeNode left = null;
-        TreeNode right = null;
-    }
-
 }

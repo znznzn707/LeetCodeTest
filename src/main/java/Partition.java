@@ -1,16 +1,10 @@
+import listnode.ListNode;
+
 /**
  * @author JN Ma, znznzn707@hotmail.com
  * @since 2020/08/02 15:50
  */
 
-class ListNode {
-    int val;
-    ListNode next = null;
-
-    ListNode(int val) {
-        this.val = val;
-    }
-}
 public class Partition {
 
     public ListNode partition(ListNode pHead, int x) {

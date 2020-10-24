@@ -7,13 +7,6 @@ import java.util.ArrayList;
  * @since 2020/09/25 19:52
  * <a href="https://www.nowcoder.com/practice/c56f6c70fb3f4849bc56e33ff2a50b6b?tpId=190&&tqId=35219&rp=1&ru=/ta/job-code-high-rd&qru=/ta/job-code-high-rd/question-ranking">两个链表生成相加链表</a>
  */
-class ListNode {
-    int val;
-    ListNode next = null;
-    public ListNode(int val) {
-        this.val = val ;
-    }
-}
 public class AddInList {
     /**
      *
