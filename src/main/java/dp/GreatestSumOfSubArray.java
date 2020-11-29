@@ -10,6 +10,7 @@ import java.util.Arrays;
  *     int[] arr
  *     F(i) = max(F(i-1)+arr[i], max)
  * </pre>
+ * <a href="https://www.nowcoder.com/practice/459bd355da1549fa8a49e350bf3df484?tpId=13&&tqId=11183&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking">连续子数组的最大和</a>
  */
 
 public class GreatestSumOfSubArray {
