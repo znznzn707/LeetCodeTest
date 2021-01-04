@@ -1,4 +1,4 @@
-pakage string; 
+package string;
 /**
  * <a href="https://www.nowcoder.com/practice/45327ae22b7b413ea21df13ee7d6429c?tpId=13&tags=&title=&diffculty=0&judgeStatus=0&rp=0">*** 正则表达式匹配</a>
  * <pre>
