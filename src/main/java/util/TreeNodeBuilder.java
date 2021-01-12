@@ -25,7 +25,7 @@ public class TreeNodeBuilder implements Builder<TreeNode>  {
      * @return root
      */
     @Override
-    public  TreeNode build(String str) {
+    public  TreeNode deserialize(String str) {
         String[] strs = str.split(",");
         int n = strs.length;
         Queue<TreeNode> queue = new LinkedList<>() ;
@@ -47,5 +47,20 @@ public class TreeNodeBuilder implements Builder<TreeNode>  {
             }
         }
         return root;
+    }
+    @Override
+    public String serialize(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<>() ;
+        if(root != null) queue.offer(root) ;
+        StringBuilder builder = new StringBuilder();
+        while (!queue.isEmpty()) {
+            TreeNode cur = queue.poll() ;
+            builder.append(((cur != null)? cur.val:"#") + ", ");
+            if(cur != null && (cur.left != null || cur.right != null)) {
+                queue.offer(cur.left);
+                queue.offer(cur.right);
+            }
+        }
+        return (builder.length() != 0)? builder.substring(0,builder.length()-2) : "null";
     }
 }

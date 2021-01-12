@@ -16,7 +16,7 @@ public class ListNodeBuilder implements Builder<ListNode> {
      * @return listnode head 1
      */
     @Override
-    public ListNode build(String s) {
+    public ListNode deserialize(String s) {
         String[] strs = s.split("->") ;
         ListNode head = null ;
         ListNode tail = null ;
@@ -30,5 +30,10 @@ public class ListNodeBuilder implements Builder<ListNode> {
             }
         }
         return head;
+    }
+
+    @Override
+    public String serialize(ListNode listNode) {
+        return null;
     }
 }

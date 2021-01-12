@@ -7,5 +7,6 @@ package util;
  * 子类有: {@link TreeNodeBuilder}和{@link ListNodeBuilder}</p>
  */
 public interface Builder<T> {
-    public T build(String s) ;
+    public T deserialize(String s) ;
+    public String serialize(T t) ;
 }
