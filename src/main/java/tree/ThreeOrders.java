@@ -3,15 +3,13 @@ package tree;
 /**
  * @author JN Ma, znznzn707@hotmail.com
  * @since 2020/09/23 10:58
+ * <a href="https://www.nowcoder.com/practice/a9fec6c46a684ad5a3abd4e365a9d362?tpId=190&tags=&title=&diffculty=0&judgeStatus=0&rp=1">实现二叉树的先序、中序、后序遍历</a>
  */
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-/**
- * <p>实现二叉树的先序、中序、后序遍历</p>
- */
 public class ThreeOrders {
 
     public static List<Integer> preList = new ArrayList<>() ;
