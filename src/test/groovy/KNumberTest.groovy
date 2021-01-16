@@ -1,9 +1,10 @@
+import heap.KNumber
 import spock.lang.Specification
 
 /**
  * @author JN Ma, znznzn707@hotmail.com
  * @since 2020/07/27 16:18
- * @see KNumber
+ * @see heap.KNumber
  */
 
 class KNumberTest extends Specification {
