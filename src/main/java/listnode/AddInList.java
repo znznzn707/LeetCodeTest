@@ -1,11 +1,9 @@
 package listnode;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Stack;
+
 /**
- * @author JN Ma, znznzn707@hotmail.com
- * @since 2020/09/25 19:52
- * <a href="https://www.nowcoder.com/practice/c56f6c70fb3f4849bc56e33ff2a50b6b?tpId=190&&tqId=35219&rp=1&ru=/ta/job-code-high-rd&qru=/ta/job-code-high-rd/question-ranking">两个链表生成相加链表</a>
+ * <a href="https://www.nowcoder.com/practice/c56f6c70fb3f4849bc56e33ff2a50b6b?tpId=190&tags=&title=&diffculty=0&judgeStatus=0&rp=1">两个链表生成相加链表</a>
  */
 public class AddInList {
     /**
@@ -14,42 +12,32 @@ public class AddInList {
      * @param head2 ListNode类
      * @return ListNode类
      */
-    public static ListNode addInList (ListNode head1, ListNode head2) {
+    public ListNode addInList (ListNode head1, ListNode head2) {
         // write code here
-        int x = NodeToInt(head1) ;
-        int y = NodeToInt(head2) ;
-        return IntToNode(String.valueOf(x+y)) ;
-    }
-    public static int NodeToInt(ListNode head) {
-        double count = 0 ;
-        ListNode cur = head;
-        List<Integer> list = new ArrayList<>() ;
-        while(cur != null) {
-            list.add(cur.val) ;
-            count++ ;
+        Stack<ListNode> s1 = new Stack<>();
+        Stack<ListNode> s2 = new Stack<>();
+        int carry = 0;
+        ListNode cur = head1;
+        ListNode head = null;
+        while(cur != null){
+            s1.push(cur);
             cur = cur.next ;
         }
-        int x = (int )Math.pow(10, count-1);
-        int y = 0 ;
-        for(int i: list) {
-            y += i * x ;
-            x = x / 10;
+        cur = head2;
+        while(cur != null) {
+            s2.push(cur);
+            cur = cur.next;
         }
-        return y;
-    }
-    public static ListNode IntToNode(String s) {
-        ListNode head = null ;
-        ListNode tail =  null;
-        for(char ch: s.toCharArray()) {
-            int x = Integer.valueOf(String.valueOf(ch));
-            if(head == null) {
-                head = new ListNode(x) ;
-                tail = head;
-            }else {
-                ListNode newNode = new ListNode(x) ;
-                tail.next = newNode ;
-                tail = newNode;
-            }
+        while(!s1.empty() || !s2.empty()|| carry!= 0) {
+            int sum = 0 ;
+            if(!s1.empty()) sum += s1.pop().val;
+            if(!s2.empty()) sum += s2.pop().val;
+            sum += carry;
+            if(sum > 9) carry = sum / 10;
+            else  carry = 0;
+            ListNode newNode = new ListNode(sum % 10);
+            if(head != null)   newNode.next = head;
+            head = newNode;
         }
         return head;
     }
