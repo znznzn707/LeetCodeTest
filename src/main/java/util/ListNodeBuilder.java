@@ -17,7 +17,7 @@ public class ListNodeBuilder implements Builder<ListNode> {
      */
     @Override
     public ListNode deserialize(String s) {
-        String[] strs = s.split("->") ;
+        String[] strs = s.split(",") ;
         ListNode head = null ;
         ListNode tail = null ;
         for (int i = 0; i < strs.length; i++) {
@@ -34,6 +34,13 @@ public class ListNodeBuilder implements Builder<ListNode> {
 
     @Override
     public String serialize(ListNode listNode) {
-        return null;
+        ListNode cur = listNode ;
+        StringBuilder sb = new StringBuilder();
+        while (cur != null && cur.next != null) {
+            sb.append(cur.val+",");
+            cur = cur.next;
+        }
+        sb.append(cur.val);
+        return new String(sb);
     }
 }
