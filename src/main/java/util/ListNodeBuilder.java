@@ -10,7 +10,7 @@ public class ListNodeBuilder implements Builder<ListNode> {
 
     /**
      * <pre>
-     *     1->2->3->4->5
+     *     1,2,3,4,5
      * </pre>
      * @param s linkedlist string
      * @return listnode head 1
