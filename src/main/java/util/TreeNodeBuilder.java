@@ -56,11 +56,15 @@ public class TreeNodeBuilder implements Builder<TreeNode>  {
         while (!queue.isEmpty()) {
             TreeNode cur = queue.poll() ;
             builder.append(((cur != null)? cur.val:"#") + ", ");
-            if(cur != null && (cur.left != null || cur.right != null)) {
+            if(cur != null) {
                 queue.offer(cur.left);
                 queue.offer(cur.right);
             }
         }
-        return (builder.length() != 0)? builder.substring(0,builder.length()-2) : "null";
+        int len = builder.length()-1;
+        for (; len >= 0; --len) {
+            if(builder.charAt(len) >= '0' && builder.charAt(len) <= '9') break;
+        }
+        return (builder.length() != 0)? builder.substring(0,len+1) : "null";
     }
 }
