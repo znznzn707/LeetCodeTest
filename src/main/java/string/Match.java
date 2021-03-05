@@ -1,44 +1,56 @@
 package string;
+
 /**
- * <a href="https://www.nowcoder.com/practice/45327ae22b7b413ea21df13ee7d6429c?tpId=13&tags=&title=&diffculty=0&judgeStatus=0&rp=0">*** 正则表达式匹配</a>
- * <pre>
- *题目描述
- *请实现一个函数用来匹配包括'.'和'*'的正则表达式。
- *模式中的字符'.'表示任意一个字符，而'*'表示它前面的字符可以出现任意次（包含0次）。
- *在本题中，匹配是指字符串的所有字符匹配整个模式。
- * 例如，字符串"aaa"与模式"a.a"和"ab*ac*a"匹配，但是与"aa.a"和"ab*a"均不匹配
- * </pre>
+ * <a href="https://www.nowcoder.com/practice/28970c15befb4ff3a264189087b99ad4?tpId=190&tqId=36062&rp=1&ru=%2Factivity%2Foj&qru=%2Fta%2Fjob-code-high-rd%2Fquestion-ranking&tab=answerKey">正则表达式匹配</a>
+ * <p>重要题目</p>
  */
 public class Match {
-    public boolean match(char[] str, char[] pattern) {
-        if (str == null || pattern == null)
-            return false;
-        return matchCore(str, 0, pattern, 0);
+    /**
+     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+     *
+     * @param str     string字符串
+     * @param pattern string字符串
+     * @return bool布尔型
+     */
+    public static boolean match(String str, String pattern) {
+        // write code here
+        if (pattern.length() == 0) return str.length() == 0;
+        boolean match = str.length() > 0 && (str.charAt(0) == pattern.charAt(0) || pattern.charAt(0) == '.');
+        if (pattern.length() > 1 && pattern.charAt(1) == '*')
+            return match(str, pattern.substring(2)) || (match && match(str.substring(1), pattern)); // 0次||多次
+        else return match && match(str.substring(1), pattern.substring(1));
     }
 
-    private boolean matchCore(char[] str, int s, char[] pattern, int p) {
-        //下面4行是递归结束标志，两个指针都指到了最后，才是匹配，否则不匹配
-        if (s == str.length && p == pattern.length)
-            return true;
-        if (s < str.length && p == pattern.length)
-            return false;
+    //dp
+    public static boolean match2(String str, String pattern) {
+        if (pattern.length() == 0) return str.length() == 0;
+        int sl = str.length();
+        int ptl = pattern.length();
+        boolean[][] dp = new boolean[sl+1][ptl+1];
+        for(int i = 0; i <= sl; ++i) {
+            for(int j = 0; j <= ptl; ++j) {
+                if(j == 0) dp[i][j] = (i == 0);
+                else {
+                    //pattern后面不是*的情况
+                    if (pattern.charAt(j - 1) != '*') {
+                        if (i > 0 && (str.charAt(i - 1) == pattern.charAt(j - 1) || pattern.charAt(j - 1) == '.'))
+                            dp[i][j] = dp[i - 1][j - 1];
+                    }else {
+                        //pattern后面为*
+                        if(j >= 2) dp[i][j] = dp[i][j-2]; //*表示0次
+                        if(i>0 && j>=2 &&(str.charAt(i-1)==pattern.charAt(j-2)||pattern.charAt(j-2)=='.')){
+                            dp[i][j] |= dp[i-1][j];//*表示多次，匹配*前面的字符
+                        }
+                    }
+                }
 
-        //虽然比的是P位置的，但是P后面出现*时，规则需要改变。
-        if (p + 1 < pattern.length && pattern[p + 1] == '*') {
-            //出现了*，并且s和P指向的相同，3种情况并列
-            if ((s < str.length && pattern[p] == '.')
-                    || (s < str.length && pattern[p] == str[s])) {
-                return matchCore(str, s, pattern, p + 2)
-                    || matchCore(str, s + 1, pattern, p)
-                    || matchCore(str, s + 1, pattern, p + 2);
-            } else {//出现了*，并且s和p指向的不同，那就把*前面的字符理解出现了0次，p+2
-                return matchCore(str, s, pattern, p + 2);
             }
         }
-        //说明P后面不是*，那么就进行常规判断。相同就分别给指针+1
-        if (s < str.length && (pattern[p] == str[s] || pattern[p] == '.'))
-            return matchCore(str, s + 1, pattern, p + 1);
-        //p后面又不是*，也没有.给你撑腰，你还敢出现不同，那必然false
-        return false;
+        return dp[sl][ptl];
+    }
+
+    public static void main(String[] args) {
+        boolean isMatch = match2("aaa", "a*a");
+        System.out.println(isMatch);
     }
 }
