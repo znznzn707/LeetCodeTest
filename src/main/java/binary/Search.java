@@ -18,10 +18,10 @@ public class Search {
             int mid = (left+right) >> 1;
             if(A[mid] == target) return mid;
             if(A[mid] >= A[left]) {
-                if(A[mid] > target && A[left] <= target)right = mid-1;
+                if(A[left] <= target)right = mid-1;
                 else left = mid+1;
             }else{
-                if(A[mid] < target && A[right] >= target) left = mid+1;
+                if(A[right] >= target) left = mid+1;
                 else right = mid-1;
             }
         }
@@ -29,7 +29,7 @@ public class Search {
     }
 
     public static void main(String[] args) {
-        int[] nums = {4,5,6,7,0,1,2};
+        int[] nums = {4,5,5,7,0,1,2};
         Search search = new Search();
         int n = search.search(nums, 5);
         System.out.println(n) ;
